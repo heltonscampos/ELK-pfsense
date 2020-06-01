@@ -13,10 +13,13 @@ Nesta pipeline utilizamos apenas as três principais ferramentas forneceidas pel
 3. Conta free no Maxmind para o GeoIP
 
 # Executando
-Após criar a conta no Maxmind, conforme exige a documentação: https://www.elastic.co/guide/en/logstash/current/plugins-filters-geoip.html, vamos criar os arquivos de instalação
-#mkdir geoip
+Depois de fazer o Download dos arquivos de configuração que estão nas pastas /GeoIP e /pfsense-ELK, vamos criar criar a conta no Maxmind, conforme exige a documentação: https://www.elastic.co/guide/en/logstash/current/plugins-filters-geoip.html, como segue
+#mkdir /geoip
 #cd geoip/
 #dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm 
 #wget https://github.com/maxmind/geoipupdate/releases/download/v4.0.0/geoipupdate_4.0.0_linux_amd64.rpm 
 #rpm -Uvhi geoipupdate_4.0.0_linux_amd64.rpm 
-
+Agora, deve-se, no arquivo de configuração em /etc/GeoIP.conf, modifica primeiramente as linhas 7 e 8 para colocar a conta e licença, e linha 13 conforme figura abaixo. 
+(./geoip.png)
+Depois, altera-se o arquivo para a pasta onde ficarão os arquivos do GeoLite2, que aqui foi o /geoip 
+(./geoipupdate.png)
