@@ -35,7 +35,7 @@ O próximo passo de configuração do GeoIP são para copiar e iniciar os arquiv
 ![geoipupdate](./geoipupdate.png)
 
 E então, na pasta /pfsense-ELK/template tem o arquivo (template) que serve também para o mapeamento GeoIP, que precisa  de um processo de indexação de dados que ocorre no Kibana (que será realizado posteriormente). Neste arquivo, precisa-se alterar o campo “index_pattern” para o pattern criado na interface web do Kibana, no nosso caso, o index foi pfsense-*
-![template](./template.png)
+![template2](./template2.png)
 
 Finalmente, deve-se alterar dentro do arquivo /etc/logstash/pipelines.yml, apontando para o local onde se encontram os arquivos necessários da pipeline, no nosso caso /pfsense-ELK/configs/* .conf. Lembrando que é possível ter mais de uma pipeline para logs de serviços diferentes. Após a realização deste passo, basta reiniciar o serviço.
 ```
@@ -49,5 +49,10 @@ As dashboards como dito anteriormente são criadas no Kinana e são formadas por
 ![pf02](./pf02.png)
 ![vpn2](./vpn2.png)
 
-
+## Referências
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-geoip.html
+https://github.com/3ilson/pfelk/
+https://www.elastic.co/guide/en/kibana/current/maps.html
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
+https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-centos-7
 
