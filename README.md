@@ -23,5 +23,31 @@ Depois de fazer o Download dos arquivos de configuração que estão nas pastas 
 ```
 Agora, deve-se, no arquivo de configuração em /etc/GeoIP.conf, modifica primeiramente as linhas 7 e 8 para colocar a conta e licença, e linha 13 conforme figura abaixo. 
 ![geoip](./geoip.png)
-Depois, altera-se o arquivo para a pasta onde ficarão os arquivos do GeoLite2, que aqui foi o /geoip 
+
+O próximo passo de configuração do GeoIP são para copiar e iniciar os arquivos na pipeline onde será executado. Depois altera-se o arquivo para a pasta onde ficarão os arquivos do GeoLite2, que aqui foi o /geoip, coforme imagem abaixo e então setaremos o timezone que neste caso foi Fortaleza.
+```
+#sudo geoipupdate -d /geoip
+
+#sudo vi /etc/cron.weekly/geoipupdate
+
+#sudo timedatectl set-timezone America/Fortaleza
+```
 ![geoipupdate](./geoipupdate.png)
+
+E então, na pasta /pfsense-ELK/template tem o arquivo (template) que serve também para o mapeamento GeoIP, que precisa  de um processo de indexação de dados que ocorre no Kibana (que será realizado posteriormente). Neste arquivo, precisa-se alterar o campo “index_pattern” para o pattern criado na interface web do Kibana, no nosso caso, o index foi pfsense-*
+![template](./template.png)
+
+Finalmente, deve-se alterar dentro do arquivo /etc/logstash/pipelines.yml, apontando para o local onde se encontram os arquivos necessários da pipeline, no nosso caso /pfsense-ELK/configs/* .conf. Lembrando que é possível ter mais de uma pipeline para logs de serviços diferentes. Após a realização deste passo, basta reiniciar o serviço.
+```
+#systemctl restart logstash
+```
+![pipeline](./pipeline.png)
+
+## Dashboards
+As dashboards como dito anteriormente são criadas no Kinana e são formadas por várias visualizações. As dashboards mostradas aqui foram exportadas e podem ser utilizadas fazendo o download do arquivo e subindo para a sua Stack.
+![pf01](./pf01.png)
+![pf02](./pf02.png)
+![vpn](./vpn.png)
+
+
+
