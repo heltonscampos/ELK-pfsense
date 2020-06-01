@@ -47,7 +47,7 @@ Finalmente, deve-se alterar dentro do arquivo /etc/logstash/pipelines.yml, apont
 As dashboards como dito anteriormente são criadas no Kinana e são formadas por várias visualizações. As dashboards mostradas aqui foram exportadas e podem ser utilizadas fazendo o download do arquivo e subindo para a sua Stack.
 ![pf01](./pf01.png)
 ![pf02](./pf02.png)
-![vpn](./vpn.png)
+![vpn2](./vpn2.png)
 
 
 
